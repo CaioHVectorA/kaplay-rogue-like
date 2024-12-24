@@ -10,7 +10,7 @@
 **Público-alvo:** Jogadores casuais e entusiastas de roguelikes que buscam uma experiência viciante, de curta duração por sessão, com progressão satisfatória.
 
 **Resumo:**
-"Labyrinth of Echoes" é um roguelike minimalista em que o jogador assume o papel de uma alma presa em um labirinto gerado proceduralmente. O objetivo é escapar do labirinto enquanto coleta "Fragmentos de Eco" para desbloquear poderes e desvendar segredos sobre sua origem. O jogo foca em movimentação estratégica, habilidades simples e uma progressão recompensadora.
+"Labyrinth of Echoes" é um roguelike minimalista em que o jogador assume o papel de uma alma presa em um labirinto gerado proceduralmente, com outras almas. O objetivo é escapar do labirinto enquanto coleta "Fragmentos de Eco" para desbloquear poderes e desvendar segredos sobre sua origem. O jogo foca em movimentação estratégica, habilidades simples e uma progressão recompensadora.
 
 ---
 
