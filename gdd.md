@@ -128,28 +128,13 @@ Em breve.
 
 ---
 
-**8. Ferramentas Recomendadas**
-
-**Motor de Jogo:** Godot, Unity ou Construct.\
-**Arte:** Generative AI para tiles e sprites (DALL-E, MidJourney).\
-**Som:** Bfxr para efeitos sonoros, Audacity para ajustes.
-
----
-
-**9. Lore**
+**8. Lore**
 
 No centro do multiverso existe um lugar chamado Labirinto de Ecos, uma dimensão onde memórias esquecidas e almas perdidas são aprisionadas. Você é uma dessas almas, um fragmento de algo maior, condenado a vagar por corredores sem fim. A cada passo, o Labirinto sussurra fragmentos de sua própria história: um ser todo-poderoso, conhecido como o Guardião dos Ecos, manipula o labirinto para testar aqueles que entram. Dizem que quem conseguir escapar se tornará mais do que uma alma perdida — ganhará a capacidade de moldar a realidade.
 
 **Fragmentos de Eco:**
 Os Fragmentos de Eco são resíduos de memórias e poder armazenados no labirinto. Coletá-los permite que você acesse habilidades antigas esquecidas ou desbloqueie novos talentos. Cada fragmento é uma parte da história do Guardião, revelando sua própria corrupção e o motivo por trás do labirinto.
 
-**Poderes Baseados na Lore:**
-
-1. **Eco do Tempo:** Permite desacelerar o movimento dos inimigos brevemente, refletindo a distorção temporal do labirinto.
-2. **Véu das Sombras:** Torna o jogador invisível por alguns segundos, simbolizando a natureza etérea das almas perdidas.
-3. **Explosão de Memórias:** Libera um ataque em área, usando os ecos acumulados para purgar inimigos próximos.
-4. **Correntes de Realidade:** Cria uma barreira temporária que bloqueia projéteis inimigos, representando a resistência da alma contra o labirinto.
-5. **Fragmento Guardião:** Convoca um pequeno clone espectral que luta ao seu lado por um curto período.
 
 **Finalidade do Labirinto:**
 Os sussurros dizem que o Guardião busca um sucessor digno. No entanto, sua verdadeira intenção é se libertar de sua própria prisão. Cada jogador é mais uma tentativa do labirinto de criar o guerreiro perfeito para essa tarefa.
