@@ -2,6 +2,7 @@ import { KAPLAYCtx } from "kaplay"
 import { PLAYER } from "../consts/player"
 import { stamina } from "../components/stamina"
 import { COLORS } from "../consts/colors"
+import { addBullet } from "./bullet"
 let speed = PLAYER.BASE_SPEED
 export const playerFn = (k: KAPLAYCtx) =>
     k.add([
@@ -13,7 +14,7 @@ export const playerFn = (k: KAPLAYCtx) =>
         k.health(PLAYER.HEALTH_INITAL, 100),
         stamina(100),
     ])
-type Player = ReturnType<typeof playerFn>
+export type Player = ReturnType<typeof playerFn>
 export const playerOnUpdate = (k: KAPLAYCtx, player: Player) => () => {
     if (k.mousePos().x < player.pos.x) {
         //@ts-ignore
@@ -57,9 +58,13 @@ export const setupKeybindings = (
         speed = PLAYER.BASE_SPEED * 2
         await k.wait(0.1)
         speed = PLAYER.BASE_SPEED
-        player.setStamina(player.getStamina() - 65)
+        for (let i = 0; i < 20; i++) {
+            player.setStamina(player.getStamina() - 6.5 / 1.5)
+            await k.wait(0.002)
+        }
     })
     k.onButtonDown("shoot", () => {})
+    k.onClick(() => addBullet(k, player))
 }
 
 export const healthBar = (k: KAPLAYCtx, player: Player) => {
