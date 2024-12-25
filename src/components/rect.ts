@@ -1,6 +1,4 @@
-import { Component } from "./component.type"
-
-export const rectFactory: Component<"params"> = (
+export const rectFactory = (
     k,
     pos: [number, number] = [30, 0],
     s: number = 30,
