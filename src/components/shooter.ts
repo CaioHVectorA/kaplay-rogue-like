@@ -9,9 +9,9 @@ type ShooterProps = {
     bulletSize?: Vec2
     burst?: number
     // linear burst is a line of bullets, multiple burst is a spread of bullets, bunch bullet is like a row of burst bullets
-    burstMode: "LINEAR" | "MULTIPLE" | "BUNCH"
-    burstTimeout: number
-    bunchBurstRows: number
+    burstMode: "LINEAR" | "MULTIPLE" | "BUNCH" | "NONE"
+    burstTimeout?: number
+    bunchBurstRows?: number
 }
 export function shooter(
     isNPCEnemy: boolean = true,
@@ -40,7 +40,7 @@ export function shooter(
     }
     return {
         id: "shooter",
-        require: ["state"],
+        require: [],
         add() {},
         update() {
             shotCooldown = Math.max(0, shotCooldown - 1)
@@ -62,8 +62,8 @@ export function shooter(
                     k.move(bulletDir, props.bulletSpeed || 300),
                     k.rect(props.bulletSize.x || 30, props.bulletSize.y || 50),
                     k.color(...COLORS.brass),
-                    k.body(),
-                    k.area(),
+                    // k.body(),
+                    // k.area(),
                     k.anchor("center"),
                 ])
                 return
