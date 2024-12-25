@@ -41,7 +41,7 @@
 
 - O jogador pode evoluir por meio de uma árvore de habilidades com três caminhos principais: **Purificação**, **Destruição** e **Conjuração**.
 - Cada caminho representa um estilo único de jogo:
-  - **Purificação:** Técnicas pacifistas que libertam as almas, mas dropam menos Fragmentos de Eco. Favorece aumento de **Vida**.
+  - **Purificação:** Técnicas pacifistas que libertam as almas(curam o usuário), mas dropam menos Fragmentos de Eco. Favorece aumento de **Vida**.
   - **Destruição:** Técnicas poderosas e explosivas que infligem alto dano. Favorece aumento de **Poder**.
   - **Conjuração:** Técnicas baseadas em controle, como paralisação e conjurações. Favorece aumento de **Controle de Ecos**.
 - O jogador pode combinar dois caminhos (primário e secundário), criando combinações como:
