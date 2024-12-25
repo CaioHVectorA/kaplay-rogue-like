@@ -9,36 +9,10 @@ import {
 import { rectFactory } from "./components/rect"
 import { PLAYER } from "./consts/player"
 import { health } from "kaplay/dist/declaration/components"
+import { buttonConfig } from "./consts/button.config"
+import { addEnemy } from "./entities/soul"
 
-const k = kaplay({
-    buttons: {
-        left: {
-            keyboard: ["left", "a"],
-            gamepad: ["dpad-left"],
-        },
-        right: {
-            keyboard: ["right", "d"],
-            gamepad: ["dpad-right"],
-        },
-        up: {
-            keyboard: ["up", "w"],
-            gamepad: ["dpad-up"],
-        },
-        down: {
-            keyboard: ["down", "s"],
-            gamepad: ["dpad-down"],
-        },
-        dash: {
-            keyboard: "shift",
-            gamepad: "rshoulder",
-        },
-        shoot: {
-            keyboard: ["space"],
-            mouse: "left",
-            gamepad: ["east", "rtrigger"],
-        },
-    },
-})
+const k = kaplay(buttonConfig)
 // const { onKeyDown } = kaplay();
 
 k.loadRoot("./") // A good idea for Itch.io publishing later
@@ -54,6 +28,8 @@ player.add(
         [0.5, 0.5, 1]
     )
 )
+addEnemy(k, player)
+// addEnemy(k, player, k.vec2(200, 200))
 setupKeybindings(k, player)
 healthBar(k, player)
 staminaBar(k, player)
