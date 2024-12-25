@@ -3,9 +3,10 @@ import { PLAYER } from "../consts/player"
 import { stamina } from "../components/stamina"
 import { COLORS } from "../consts/colors"
 import { addBullet } from "./bullet"
+import { shooter } from "../components/shooter"
 let speed = PLAYER.BASE_SPEED
-export const playerFn = (k: KAPLAYCtx) =>
-    k.add([
+export const playerFn = (k: KAPLAYCtx) => {
+    const player = k.add([
         k.pos(120, 80),
         k.rect(PLAYER.WIDTH, PLAYER.HEIGHT, { fill: true }),
         k.area(),
@@ -14,6 +15,21 @@ export const playerFn = (k: KAPLAYCtx) =>
         k.health(PLAYER.HEALTH_INITAL, 100),
         stamina(100),
     ])
+    player.use(
+        shooter(
+            false,
+            player,
+            {
+                atkSpeed: 80,
+                bulletSpeed: 200,
+                bulletDamage: 10,
+                burstMode: "NONE",
+            },
+            k
+        )
+    )
+    return player
+}
 export type Player = ReturnType<typeof playerFn>
 export const playerOnUpdate = (k: KAPLAYCtx, player: Player) => () => {
     if (k.mousePos().x < player.pos.x) {
@@ -63,8 +79,6 @@ export const setupKeybindings = (
             await k.wait(0.002)
         }
     })
-    k.onButtonDown("shoot", () => {})
-    k.onClick(() => addBullet(k, player))
 }
 
 export const healthBar = (k: KAPLAYCtx, player: Player) => {
