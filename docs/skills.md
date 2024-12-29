@@ -17,6 +17,8 @@ A cada três habilidades, o jogador passa por um ponto chave e recebe atributos 
 
 As habilidades podem ser melhoradas com fragmentos de alma, o que aumentam o efeito da habilidade ou dano, afins. Cada habilidade tem um custo de fragmentos de alma para ser usada e um tempo de recarga.
 
+(29/12) Depois completar o kit de habilidades, o jogador pode converter fragmentos em atributos, como controle de ecos, poder, vida e stamina. A cada compra de atributo, os atributos ficam mais caros.
+
 Existem tipos de habilidade:
 - Passiva: Habilidades que são ativadas automaticamente e não precisam ser usadas.
 - Habilidade de invocação: Habilidades que invocam aliados ou objetos que ajudam o jogador.
