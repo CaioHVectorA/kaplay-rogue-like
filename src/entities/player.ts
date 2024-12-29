@@ -4,6 +4,7 @@ import { stamina } from "../components/stamina"
 import { COLORS } from "../consts/colors"
 import { addBullet } from "./bullet"
 import { shooter } from "../components/shooter"
+import { moving } from "../components/moving"
 let speed = PLAYER.BASE_SPEED
 export const playerFn = (k: KAPLAYCtx) => {
     const player = k.add([
@@ -13,7 +14,11 @@ export const playerFn = (k: KAPLAYCtx) => {
         k.center(),
         k.body(),
         k.health(PLAYER.HEALTH_INITAL, 100),
-        stamina(100),
+        stamina(100, k),
+        moving(k, false),
+        "player",
+        "hero",
+        "ally",
     ])
     player.use(
         shooter(
@@ -54,19 +59,23 @@ export const setupKeybindings = (
     player: ReturnType<typeof playerFn>
 ) => {
     k.onButtonDown("left", () => {
-        player.move(-speed, 0)
+        player.setHMovimentation(-speed)
+        // player.move(-speed, 0)
     })
 
     k.onButtonDown("right", () => {
-        player.move(speed, 0)
+        player.setHMovimentation(speed)
+        // player.move(speed, 0)
     })
 
     k.onButtonDown("up", () => {
-        player.move(0, -speed)
+        player.setVMovimentation(-speed)
+        // player.move(0, -speed)
     })
 
     k.onButtonDown("down", () => {
-        player.move(0, speed)
+        player.setVMovimentation(speed)
+        // player.move(0, speed);
     })
 
     k.onButtonPress("dash", async () => {

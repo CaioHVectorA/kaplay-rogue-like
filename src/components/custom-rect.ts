@@ -4,13 +4,12 @@ export type CustomRectProps = {
     // color: keyof typeof COLORS
     colorsChanges: Record<string, keyof typeof COLORS>
     radius: number
+    size: [number, number]
 }
 export function customRect(
     k: KAPLAYCtx,
-    props: CustomRectProps = { colorsChanges: {}, radius: 0 }
+    props: CustomRectProps = { colorsChanges: {}, radius: 0, size: [30, 30] }
 ) {
-    let width = this.getWidth()
-    let height = this.getHeight()
     const { colorsChanges, radius } = props
     const stateChanging: [string, string][] = []
     const states = Object.keys(colorsChanges) // ["idle", "active", "hover"]
@@ -24,9 +23,14 @@ export function customRect(
     })
     return {
         id: "customRect",
-        require: ["pos", "size", "state"],
+        require: ["pos", "state"],
         add() {
-            this.use([k.rect(width, height, { fill: true })])
+            this.add([
+                k.rect(props.size[0], props.size[1], {
+                    fill: true,
+                    radius: props.radius,
+                }),
+            ])
             stateChanging.forEach(([state, color]) => {
                 this.onStateEnter(state, () => {
                     this.use(
@@ -34,12 +38,21 @@ export function customRect(
                     )
                 })
             })
+            this.use(
+                k.color(
+                    ...(COLORS[Object.values(colorsChanges)[0]] as [
+                        number,
+                        number,
+                        number
+                    ])
+                )
+            )
         },
         update() {},
         draw() {},
         destroy() {},
         inspect() {
-            return `customRect: ${width}, ${height}`
+            return `customRect: ${30}, ${30}`
         },
     }
 }
