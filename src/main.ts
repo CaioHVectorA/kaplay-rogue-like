@@ -11,9 +11,16 @@ import { PLAYER } from "./consts/player"
 import { health } from "kaplay/dist/declaration/components"
 import { buttonConfig } from "./consts/button.config"
 import { addEnemy } from "./entities/soul"
-import { SimpleSoul } from "./data/enemy"
+import { getEnemyWithLevel, SimpleSoul } from "./data/enemy"
+import { COLORS } from "./consts/colors"
 
-const k = kaplay(buttonConfig)
+const k = kaplay({
+    ...buttonConfig,
+    // width: 2400,
+    // height: 1800,
+    // letterbox: true,
+    // background: [...COLORS.darkGray, 1],
+})
 // const { onKeyDown } = kaplay();
 
 k.loadRoot("./") // A good idea for Itch.io publishing later
@@ -29,7 +36,8 @@ player.add(
         [0.5, 0.5, 1]
     )
 )
-addEnemy(k, player, SimpleSoul)
+addEnemy(k, player, getEnemyWithLevel("simple-soul", 3))
+addEnemy(k, player, getEnemyWithLevel("high-domain-soul", 3))
 // addEnemy(k, player, k.vec2(200, 200))
 setupKeybindings(k, player)
 healthBar(k, player)

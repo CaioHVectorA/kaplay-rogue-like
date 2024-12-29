@@ -5,12 +5,20 @@ import { stamina } from "../components/stamina"
 import { speed } from "../components/speed"
 import { size } from "../components/size"
 import { customRect } from "../components/custom-rect"
-import { Enemy } from "../data/enemy"
+import { Enemy, EnemyWithLevel } from "../data/enemy"
+import { logVector } from "../lib/log-vector"
 
 export const addEnemy = (
     k: KAPLAYCtx,
     player: Player,
-    enemyData: Enemy,
+    {
+        staminaProps: {
+            distanceLimit = 100,
+            frequency: staminaFrequency = 10,
+            gainMultiplier = 1,
+        },
+        ...enemyData
+    }: EnemyWithLevel,
     pos = k.vec2(0, 0)
 ) => {
     const [width, height] = enemyData.rect.size
@@ -20,15 +28,22 @@ export const addEnemy = (
         k.state("move", ["move", "dash", "attack"]),
         k.rect(width, height, {
             fill: true,
-            radius: 22,
+            radius: enemyData.rect.radius,
         }),
-        // customRect(k, enemyData.rect),
         k.body(),
         k.area(),
         k.anchor("center"),
-        stamina(100, k, true, k.rand(1, 3)),
+        stamina(enemyData.stamina, k, true, gainMultiplier || 1),
         speed(80),
         k.named("enemy"),
+    ])
+    const label = `${enemyData.name} - LvL ${enemyData.level}`
+    enemy.add([
+        k.text(label, {
+            size: 16,
+            align: "center",
+        }),
+        k.pos(-label.length * 5, -height / 2 - 40),
     ])
     let dir
     enemy.onUpdate(() => {
@@ -37,9 +52,9 @@ export const addEnemy = (
         const random = k.rand(0, 100)
         const dist = player.pos.dist(enemy.pos)
         if (
-            random < 10 &&
+            random < staminaFrequency &&
             enemy.getStamina() > 99 &&
-            dist < enemyData.ferocity * 100 + 200
+            dist < enemyData.ferocity * distanceLimit + 200
         ) {
             enemy.enterState("dash")
         }
@@ -49,8 +64,13 @@ export const addEnemy = (
         enemy.use(k.color(...COLORS[enemyData.rect.colorsChanges["dash"]]))
         enemy.changeSpeed(enemy.getBaseSpeed() * 8)
         enemy.setStamina(enemy.getStamina() - 99)
-        console.log(player)
-        dir = player.pos.sub(enemy.pos).unit()
+        // logVector([player.getPredictedPosition(0.2), player.pos])
+        const rng = k.rand(0, 10 * enemyData.inteligence) // this rng can be 0 to 100 in the case of inteligence 10.
+        if (rng < 30) {
+            dir = player.pos.sub(enemy.pos).unit()
+        } else {
+            dir = player.getPredictedPosition(0.2).sub(enemy.pos).unit()
+        }
         await k.wait(0.2)
         enemy.changeSpeed(enemy.getBaseSpeed())
         enemy.enterState("move")
@@ -71,7 +91,6 @@ export const addEnemy = (
             player.move(dir.scale(knockbackStepDistance))
             await k.wait(0.02)
         }
-        enemy.use(k.color(...COLORS.cyan))
         enemy.enterState("move")
     })
 }
