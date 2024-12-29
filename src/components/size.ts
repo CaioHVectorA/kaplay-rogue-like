@@ -18,6 +18,9 @@ export function size(sizeX: number, sizeY: number, k: KAPLAYCtx) {
         update() {},
         draw() {},
         destroy() {},
+        inspect() {
+            return `size: ${x}, ${y}`
+        },
         getWidth() {
             return x
         },
@@ -37,9 +40,6 @@ export function size(sizeX: number, sizeY: number, k: KAPLAYCtx) {
                 bottomLeft: (this.pos() as Vec2).add(corners.bottomLeft),
                 bottomRight: (this.pos() as Vec2).add(corners.bottomRight),
             }
-        },
-        inspect() {
-            return `size: ${x}, ${y}`
         },
     }
 }
