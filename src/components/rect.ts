@@ -1,7 +1,9 @@
+import { PLAYER } from "../consts/player"
+
 export const rectFactory = (
     k,
-    pos: [number, number] = [30, 0],
-    s: number = 30,
+    pos: [number, number] = [PLAYER.WIDTH / 2, 0],
+    s: number = PLAYER.WIDTH / 2,
     color: [number, number, number] = [0.5, 0.5, 0.5]
 ) => [
     k.rect(s, s),

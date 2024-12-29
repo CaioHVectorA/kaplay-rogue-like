@@ -16,23 +16,25 @@ export function stamina(
             if (!addStaminaBar) return
             const width = this.getWidth()
             const height = this.getHeight()
+            const barWidthInScale = initial / (initial / width)
             const baseBar = this.add([
-                k.rect(initial, 10),
-                k.pos(-width + 24, -height / 2 - 12),
+                k.rect(barWidthInScale * 1.4, 10),
+                k.pos(barWidthInScale - width * 1.65, -height / 2 - 12),
                 k.color(...COLORS.darkGray),
                 k.layer("ui"),
                 k.z(30),
             ])
             const staminaBar = this.add([
-                k.rect(initial, 10, { fill: true }),
-                k.pos(-width + 24, -height / 2 - 12),
+                k.rect(barWidthInScale * 1.4, 10, { fill: true }),
+                k.pos(barWidthInScale - width * 1.65, -height / 2 - 12),
                 "staminaBar",
                 k.color(...COLORS.darkRed),
                 k.layer("ui"),
                 k.z(30),
             ])
             staminaBar.onUpdate(() => {
-                staminaBar.width = stamina
+                staminaBar.width =
+                    (stamina / maxStamina) * barWidthInScale * 1.4
             })
         },
         update() {

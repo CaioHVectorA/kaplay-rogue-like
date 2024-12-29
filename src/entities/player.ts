@@ -12,7 +12,7 @@ export const playerFn = (k: KAPLAYCtx) => {
         k.rect(PLAYER.WIDTH, PLAYER.HEIGHT, { fill: true }),
         k.area(),
         k.center(),
-        k.body(),
+        // k.body(),
         k.health(PLAYER.HEALTH_INITAL, 100),
         stamina(100, k),
         moving(k, false),
