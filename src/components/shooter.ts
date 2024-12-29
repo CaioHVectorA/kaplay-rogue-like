@@ -1,6 +1,7 @@
 import { KAPLAYCtx, Vec2 } from "kaplay"
 import { Player } from "../entities/player"
 import { COLORS } from "../consts/colors"
+import { logVector } from "../lib/log-vector"
 
 type ShooterProps = {
     atkSpeed: number
@@ -69,17 +70,31 @@ export function shooter(
                 return
             } else {
                 const bulletDir = k.mousePos().sub(playerObj.pos).unit()
+                console.log(playerObj.scale)
+                let corner: Vec2 = k.vec2(
+                    this.getCorners().topRight.x,
+                    this.getCorners().topRight.y + 32
+                )
+                //@ts-ignore
+                if (playerObj.scale.x === -1)
+                    corner = k.vec2(
+                        this.getCorners().topLeft.x - playerObj.getWidth(),
+                        this.getCorners().topLeft.y + 32
+                    )
+                logVector(corner)
                 const bullet = k.add([
-                    k.rect(30, 50),
+                    k.rect(50, 20),
                     k.color(...COLORS.roseGold),
-                    k.pos(playerObj.pos),
-                    k.body(),
+                    k.pos(corner),
+                    // k.body(),
                     k.area(),
                     k.anchor("center"),
                     k.move(bulletDir, props.bulletSpeed || 300),
                     "bullet",
                     "playerBullet",
+                    k.rotate(bulletDir.angle()),
                 ])
+                bullet.on("update", () => {})
             }
             // add bullet
         },

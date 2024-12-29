@@ -5,6 +5,7 @@ import { COLORS } from "../consts/colors"
 import { addBullet } from "./bullet"
 import { shooter } from "../components/shooter"
 import { moving } from "../components/moving"
+import { size } from "../components/size"
 let speed = PLAYER.BASE_SPEED
 export const playerFn = (k: KAPLAYCtx) => {
     const player = k.add([
@@ -12,7 +13,8 @@ export const playerFn = (k: KAPLAYCtx) => {
         k.rect(PLAYER.WIDTH, PLAYER.HEIGHT, { fill: true }),
         k.area(),
         k.center(),
-        // k.body(),
+        k.body(),
+        size(PLAYER.WIDTH, PLAYER.HEIGHT, k),
         k.health(PLAYER.HEALTH_INITAL, 100),
         stamina(100, k),
         moving(k, false),
@@ -25,8 +27,8 @@ export const playerFn = (k: KAPLAYCtx) => {
             false,
             player,
             {
-                atkSpeed: 80,
-                bulletSpeed: 200,
+                atkSpeed: 8,
+                bulletSpeed: 800,
                 bulletDamage: 10,
                 burstMode: "NONE",
             },

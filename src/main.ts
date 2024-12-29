@@ -36,8 +36,8 @@ player.add(
         [0.5, 0.5, 1]
     )
 )
-addEnemy(k, player, getEnemyWithLevel("simple-soul", 3))
-addEnemy(k, player, getEnemyWithLevel("high-domain-soul", 3))
+// addEnemy(k, player, getEnemyWithLevel("simple-soul", 3))
+// addEnemy(k, player, getEnemyWithLevel("high-domain-soul", 3))
 // addEnemy(k, player, k.vec2(200, 200))
 setupKeybindings(k, player)
 healthBar(k, player)

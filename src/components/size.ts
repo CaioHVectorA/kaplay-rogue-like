@@ -31,14 +31,14 @@ export function size(sizeX: number, sizeY: number, k: KAPLAYCtx) {
             return sizeVec2
         },
         getCenter() {
-            return (this.pos() as Vec2).add(center)
+            return (this.pos as Vec2).add(center)
         },
         getCorners() {
             return {
-                topLeft: (this.pos() as Vec2).add(corners.topLeft),
-                topRight: (this.pos() as Vec2).add(corners.topRight),
-                bottomLeft: (this.pos() as Vec2).add(corners.bottomLeft),
-                bottomRight: (this.pos() as Vec2).add(corners.bottomRight),
+                topLeft: (this.pos as Vec2).add(corners.topLeft),
+                topRight: (this.pos as Vec2).add(corners.topRight),
+                bottomLeft: (this.pos as Vec2).add(corners.bottomLeft),
+                bottomRight: (this.pos as Vec2).add(corners.bottomRight),
             }
         },
     }
